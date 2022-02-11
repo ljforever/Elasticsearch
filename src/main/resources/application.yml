@@ -1,0 +1,18 @@
+server:
+  port: 18080
+spring:
+  datasource:
+    username: shyj
+    password: shyj
+    url: jdbc:oracle:thin:@localhost:11521:orcl
+    driver-class-name: oracle.jdbc.OracleDriver
+  thymeleaf:
+    #    enabled: true  #开启thymeleaf视图解析
+    encoding: utf-8  #编码
+    prefix: classpath:/templates #前缀
+    cache: false  #是否使用缓存
+    mode: LEGACYHTML5  #非严格的HTML语法模式
+    suffix: .html  #后缀名
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "spring.elasticsearch.socketTimeOut",
+      "type": "java.lang.String",
+      "description": "Description for spring.elasticsearch.socketTimeOut."
+  }
+] }

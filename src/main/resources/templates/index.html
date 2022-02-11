@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>卫星轨道报</title>
+    <link rel="stylesheet" type="text/css" href="/js/jquery-easyui-1.8.6/themes/default/easyui.css">
+    <link rel="stylesheet" type="text/css" href="/js/jquery-easyui-1.8.6/themes/icon.css">
+    <link rel="stylesheet" type="text/css" href="/js/jquery-easyui-1.8.6/demo/demo.css">
+    <script type="text/javascript" src="/js/jquery-easyui-1.8.6/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-easyui-1.8.6/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/js/jquery-easyui-1.8.6/locale/easyui-lang-zh_CN.js"></script>
+    <script type="text/javascript" src="/js/view.js"></script>
+    <style>
+        #enterTime{
+            width: 180px;
+        }
+        #outTime{
+            width: 180px;
+        }
+    </style>
+</head>
+<body onload="load();">
+<div class="easyui-panel" title="卫星轨道数据" style="width:100%;height:930px;padding:1px;">
+    <div class="easyui-layout" data-options="fit:true">
+        <div data-options="region:'north',split:true" style="width:100%;padding:0;height:25%">
+            <div>
+                <p style="font-weight: bold;font-size: large;margin-left: 20px">查询条件</p>
+            </div>
+            <form id="serachform" style="text-align: center">
+                <span for="enterTime">卫星过境时间:</span>
+                <!--<input id="entertime" name="entertime" editable="false" placeholder="请选择日期"/>-->
+                <input type="text" id="enterTime" autocomplete="off"
+                       class="demo-input easyui-datetimebox" name="enterTime" placeholder="选择日期时间"/>
+                <span for="">——</span>
+                <input type="text" id="outTime" autocomplete="off"
+                       class="demo-input easyui-datetimebox" name="outTime" placeholder="选择日期时间"/>
+                <span for="">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span for="satelliteName">卫星名称:</span>
+                <input autocomplete="off" class="easyui-textbox"
+                       ss type="text" name="satelliteName" id="satelliteName"/>
+                <span for="enterTime">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <span for="entertime">是否包含湖南:</span>
+                <select id="whetherIncludeHunan" class="easyui-combobox" name="whetherIncludeHunan"
+                        style="width:100px;">
+                    <option value="0" selected="true">否</option>
+                    <option value="1" >是</option>
+                </select>
+                <span for="enterTime">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                <a id="search" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-search'" style="width: 90px">查询</a>
+                <a id="resetsearch" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-clear'" style="width: 90px">重置</a>
+            </form>
+
+        </div>
+        <div data-options="region:'center'" style="padding:0">
+<!--            <div style="width:100%;height: 6%;">-->
+<!--                <a id="add" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-add'">增加</a>-->
+<!--                <a id="delete" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-remove'">删除</a>-->
+<!--                <a id="download" href="/export/word/2021年01月15日卫星过境预报表.doc" download="2021年01月15日卫星过境预报表.doc"-->
+<!--                   class="easyui-linkbutton" data-options="iconCls:'icon-save'">模板下载</a>-->
+<!--                <a id="upload" href="#" class="easyui-linkbutton" data-options="iconCls:'icon-redo'">批量导入</a>-->
+<!--            </div>-->
+<!--            <div id="add_dialog" class="easyui-dialog" title=""-->
+<!--                 data-options="modal:true,closed:true,resizable:true,iconCls:'icon-save'"-->
+<!--                 style="width:750px;height:700px;">-->
+<!--            </div>-->
+<!--            <div id="upload_dialog" class="easyui-dialog" title=""-->
+<!--                 data-options="modal:true,closed:true,resizable:true,iconCls:'icon-save'"-->
+<!--                 style="width:750px;height:500px;">-->
+<!--            </div>-->
+            <table id="table" class="easyui-datagrid" style="width:100%;height: 94%;"
+                   title="">
+            </table>
+
+        </div>
+    </div>
+</div>
+</body>
+<script>
+    satellitepathway.init();//初始化
+
+    //进入界面加载datagrid数据,如果放在init()里面会加载查询两次
+    window.onload = function () {
+        satellitepathway.data();
+    }
+</script>
+</html>
